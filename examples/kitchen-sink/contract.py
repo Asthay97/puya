@@ -245,6 +245,17 @@ class KitchenSink(ARC4Contract):
         # assert self.global_account.value ==  Account(Bytes(b"Hello")) # Account
         return True
     
+    ### set function
+    @arc4.abimethod
+    def set_global_state(self, value: Bytes) -> None:
+        self.global_bytes_full.value = value
+
+    ### delete global state
+    @arc4.abimethod
+    def del_global_state(self) -> bool:
+        del self.global_int_full.value
+        return True
+    
     ## Box
     ### Bool
     @arc4.abimethod
